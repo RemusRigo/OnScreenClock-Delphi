@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{18D9B3AD-BDBE-4A18-8174-6E8E710EE2EE}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Clock\Clock.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Clock">
+        <MSBuild Projects="Clock\Clock.dproj"/>
+    </Target>
+    <Target Name="Clock:Clean">
+        <MSBuild Projects="Clock\Clock.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Clock:Make">
+        <MSBuild Projects="Clock\Clock.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Clock"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Clock:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Clock:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
